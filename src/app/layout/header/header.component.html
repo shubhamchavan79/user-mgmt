@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand-lg sticky-top bg-primary py-3" *ngIf="isLoggedIn$ | async">
+  <div class="container">
+    <div class="app-header-menu d-flex justify-content-between align-items-center w-100 pl-5">
+      <div class="text-white">
+        <span class="navbar-brand mb-0 h1">User</span>
+      </div>
+      <div>
+        <div class="cursor text-white" (click)="logout()">Logout</div>
+      </div>
+    </div>
+  </div>
+</nav>

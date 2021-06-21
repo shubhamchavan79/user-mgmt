@@ -1,0 +1,13 @@
+.cust-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  min-width: 260px;
+  border-radius: 4px;
+}
+
+.toast-icon {
+  cursor: pointer;
+  font-size: 20px;
+}

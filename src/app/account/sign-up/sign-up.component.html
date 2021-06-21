@@ -1,0 +1,52 @@
+<div class="main d-flex justify-content-center align-items-center">
+  <div class="signup-card bg-white my-2">
+    <div class="signup-title p-3">
+      <h4 class="text-center m-0">Sign Up</h4>
+    </div>
+    <form id="signUpForm" name="signUpForm" class="form p-5" (ngSubmit)="signUpForm.form.valid && onSubmit(signUpForm);" #signUpForm="ngForm">
+      <div class="form-group mb-4">
+        <label class="mb-2" for="fname">First Name</label>
+        <input type="text" id="fname" class="form-control" name="fname" #fname="ngModel" [(ngModel)]="signUpFormParams.first_name" [ngClass]="{'is-invalid':(signUpForm.submitted && fname.invalid)}" pattern="^[a-zA-Z]*$" required />
+        <div class="invalid-feedback" *ngIf="signUpForm.submitted && fname.invalid">
+          <div *ngIf="fname.errors?.required">Please enter first name</div>
+          <div *ngIf="fname.errors?.pattern">Please enter valid first name</div>
+        </div>
+      </div>
+
+      <div class="form-group mb-4">
+        <label class="mb-2" for="lname">Last Name</label>
+        <input type="text" id="lname" class="form-control" name="lname" #lname="ngModel" [(ngModel)]="signUpFormParams.last_name" [ngClass]="{'is-invalid':(signUpForm.submitted && lname.invalid)}" pattern="^[a-zA-Z]*$" required />
+        <div class="invalid-feedback" *ngIf="signUpForm.submitted && lname.invalid">
+          <div *ngIf="lname.errors?.required">Please enter last name</div>
+          <div *ngIf="lname.errors?.pattern">Please enter valid last name</div>
+        </div>
+      </div>
+
+      <div class="form-group mb-4">
+        <label class="mb-2" for="email">Email Address</label>
+        <input type="text" id="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="signUpFormParams.email" [ngClass]="{'is-invalid':(signUpForm.submitted && email.invalid)}" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
+        <div class="invalid-feedback" *ngIf="signUpForm.submitted && email.invalid">
+          <div *ngIf="email.errors?.required">Please enter email</div>
+          <div *ngIf="email.errors?.pattern">Please enter valid email address</div>
+        </div>
+      </div>
+      
+      <div class="form-group mb-4">
+        <label class="mb-2" for="passowrd">Password</label>
+        <input type="password" id="password" class="form-control" name="password" #password="ngModel" [(ngModel)]="signUpFormParams.password" [ngClass]="{'is-invalid':(signUpForm.submitted && password.invalid)}" minlength="8" required />
+        <div class="invalid-feedback" *ngIf="signUpForm.submitted && password.invalid">
+          <div *ngIf="password.errors?.required">Please enter password</div>
+          <div *ngIf="password.errors?.minlength">Password should be minimum 8 length</div>
+        </div>
+      </div>
+
+      <div *ngIf="isServerError" class="invalid-feedback d-block form-group mb-4">
+        {{errorMessage}}
+      </div>
+      <div class="form-group text-center">
+        <button type="submit" id="btnSignIn" class="btn btn-primary w-100 mb-2">Create Account</button>
+        <p class="mb-0">Already have a account? <a [routerLink]="['/account/signin']">Sign In</a></p>
+      </div>
+    </form>
+  </div>
+</div>

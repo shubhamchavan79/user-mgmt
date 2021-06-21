@@ -1,0 +1,6 @@
+<ngb-toast *ngIf="showToaster" [class]="className" [delay]="delay || 1000" (hidden)="close()">
+  <div class="d-flex justify-content-between align-items-center">
+   <span>{{action}}</span>
+   <span class="toast-icon" (click)="close()">&times;</span>
+  </div>
+</ngb-toast>

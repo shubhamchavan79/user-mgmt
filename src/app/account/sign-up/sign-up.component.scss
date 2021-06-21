@@ -1,0 +1,16 @@
+.signup {
+
+  &-card {
+    min-height: 325px;
+    width: 450px;
+    border: 1px solid #fafafa;
+    border-radius: 4px;
+    box-shadow: 5px 5px 5px #eaeaea;
+  }
+
+  &-title {
+    border-bottom: 0.55px solid lightgray;
+    background-color: #fafafa;
+  }
+
+}

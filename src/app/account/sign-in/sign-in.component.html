@@ -1,0 +1,32 @@
+<div class="main d-flex justify-content-center align-items-center">
+  <div class="login-card bg-white my-2">
+    <div class="login-title p-3">
+      <h4 class="text-center m-0">Sign In</h4>
+    </div>
+    <form id="loginForm" name="loginForm" class="form p-5" (ngSubmit)="loginForm.form.valid && onSubmit(loginForm);"
+    #loginForm="ngForm">
+      <div class="form-group mb-4">
+        <label class="mb-2" for="email">Email Address</label>
+        <input type="text" id="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="loginFormParams.email" [ngClass]="{'is-invalid':(loginForm.submitted && email.invalid)}" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
+        <div class="invalid-feedback" *ngIf="loginForm.submitted && email.invalid">
+          <div *ngIf="email.errors?.required">Please enter email</div>
+          <div *ngIf="email.errors?.pattern">Please enter valid email address</div>
+        </div>
+      </div>
+      <div class="form-group mb-4">
+        <label class="mb-2" for="passowrd">Password</label>
+        <input type="password" id="password" class="form-control" name="password" #password="ngModel" [(ngModel)]="loginFormParams.password" [ngClass]="{'is-invalid':(loginForm.submitted && password.invalid)}" required />
+        <div class="invalid-feedback" *ngIf="loginForm.submitted && password.invalid">
+          <div *ngIf="password.errors?.required">Please enter password</div>
+        </div>
+      </div>
+      <div *ngIf="isLoginServerError" class="invalid-feedback d-block form-group mb-4">
+        {{errorMessage}}
+      </div>
+      <div class="form-group text-center">
+        <button type="submit" id="btnSignIn" class="btn btn-primary w-100 mb-2">Sign in</button>
+        <p class="mb-0">Do you want to create account? <a [routerLink]="['/account/signup']">Sign Up</a></p>
+      </div>
+    </form>
+  </div>
+</div>
